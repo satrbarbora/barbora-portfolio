@@ -137,7 +137,7 @@ function SidebarContent() {
         {filters.map((label) => {
           const isActive = activeCategory === label;
           const baseColor = isActive ? ACTIVE_COLOR : BASE_COLOR;
-          const { onEnter, onLeave } = makeHoverHandlers(baseColor);
+          const { onMouseEnter, onMouseLeave } = makeHoverHandlers(baseColor);
 
           return (
             <div
