@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -7,33 +8,171 @@ type Project = {
   slug: string;
   title: string;
   categories: string[];
-  imageUrl: string;
+  color: string;
+  description?: string;
+  images?: string[];
 };
 
+// Example project data array
 const MOCK_PROJECTS: Project[] = [
-  {
-    slug: "white-nights-deep-sleep",
-    title: "White nights deep sleep",
-    categories: ["documentary drawing", "books & comics"],
-    imageUrl: "https://via.placeholder.com/600x400?text=Project+1",
-  },
   {
     slug: "river-drawings",
     title: "River drawings",
-    categories: ["documentary drawing", "personal work"],
-    imageUrl: "https://via.placeholder.com/600x400?text=Project+2",
+    categories: ["documentary drawing"],
+    color: "#D4A5E8",
   },
+  {
+    slug: "urban-sketches",
+    title: "Urban sketches",
+    categories: ["documentary drawing"],
+    color: "#B4D4E8",
+  },
+  {
+    slug: "nature-studies",
+    title: "Nature studies",
+    categories: ["documentary drawing"],
+    color: "#A5E8D4",
+  },
+  {
+    slug: "daily-observations",
+    title: "Daily observations",
+    categories: ["documentary drawing"],
+    color: "#D4E8A5",
+  },
+  // ...existing code...
+  {
+    slug: "visual-story",
+    title: "Visual story",
+    categories: ["books & comics"],
+    color: "#FFF9C4",
+  },
+  {
+    slug: "page-design",
+    title: "Page design",
+    categories: ["books & comics"],
+    color: "#C5E1A5",
+  },
+
+  // Illustration
+  {
+    slug: "character-design",
+    title: "Character design",
+    categories: ["illustration"],
+    color: "#B5EAD7",
+  },
+  {
+    slug: "editorial-art",
+    title: "Editorial art",
+    categories: ["illustration"],
+    color: "#A1D6D6",
+  },
+  {
+    slug: "cover-art",
+    title: "Cover art",
+    categories: ["illustration"],
+    color: "#7FD8D8",
+  },
+  {
+    slug: "pattern-design",
+    title: "Pattern design",
+    categories: ["illustration"],
+    color: "#73CDCD",
+  },
+  {
+    slug: "digital-painting",
+    title: "Digital painting",
+    categories: ["illustration"],
+    color: "#6BB7D6",
+  },
+
+  // Odd Design
   {
     slug: "odd-poster",
     title: "Odd poster",
-    categories: ["odd design", "illustration"],
-    imageUrl: "https://via.placeholder.com/600x400?text=Project+3",
+    categories: ["odd design"],
+    color: "#C9ADA7",
   },
+  {
+    slug: "experimental-layout",
+    title: "Experimental layout",
+    categories: ["odd design"],
+    color: "#D4A5A5",
+  },
+  {
+    slug: "unconventional-art",
+    title: "Unconventional art",
+    categories: ["odd design"],
+    color: "#D9A5B5",
+  },
+  {
+    slug: "surreal-design",
+    title: "Surreal design",
+    categories: ["odd design"],
+    color: "#E5A5A5",
+  },
+  {
+    slug: "abstract-concept",
+    title: "Abstract concept",
+    categories: ["odd design"],
+    color: "#F0A5A5",
+  },
+
+  // Personal Work
+  {
+    slug: "personal-project-1",
+    title: "Personal project 1",
+    categories: ["personal work"],
+    color: "#E0BBE4",
+  },
+  {
+    slug: "personal-project-2",
+    title: "Personal project 2",
+    categories: ["personal work"],
+    color: "#D5B7E4",
+  },
+  {
+    slug: "personal-project-3",
+    title: "Personal project 3",
+    categories: ["personal work"],
+    color: "#CAB3E4",
+  },
+  {
+    slug: "personal-project-4",
+    title: "Personal project 4",
+    categories: ["personal work"],
+    color: "#BF9FE4",
+  },
+
+  // KVIDO Pottery
   {
     slug: "kvido-cups",
     title: "KVIDO cups",
     categories: ["KVIDO pottery"],
-    imageUrl: "https://via.placeholder.com/600x400?text=Project+4",
+    color: "#A8D8EA",
+  },
+  {
+    slug: "kvido-bowls",
+    title: "KVIDO bowls",
+    categories: ["KVIDO pottery"],
+    color: "#AA96DA",
+  },
+  {
+    slug: "kvido-plates",
+    title: "KVIDO plates",
+    categories: ["KVIDO pottery"],
+    color: "#FCBAD3",
+  },
+  {
+    slug: "kvido-vases",
+    title: "KVIDO vases",
+    categories: ["KVIDO pottery"],
+    color: "#F8B4D4",
+  },
+  {
+    slug: "kvido-collection",
+    title: "KVIDO collection",
+    categories: ["KVIDO pottery"],
+    color: "#F0AED8",
   },
 ];
 
@@ -49,28 +188,22 @@ export default function ProjectGrid({ locale }: { locale: "en" | "cz" }) {
       : MOCK_PROJECTS;
 
   const goToProject = (slug: string) => {
-    const base = pathname.startsWith("/(cz)") ? "/(en)/project" : "/(en)/project";
-    // project detail is EN only
-    router.push(`${base}/${slug}`);
+    if (category) {
+      router.push(`/project/${slug}?category=${encodeURIComponent(category)}`);
+    } else {
+      router.push(`/project/${slug}`);
+    }
   };
 
   return (
-    <div>
-      <div style={{ fontSize: "13px", marginBottom: "12px" }}>
-        {category ? (
-          <>Filter: <strong>{category}</strong></>
-        ) : (
-          <>All projects (newest first – mocked)</>
-        )}
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gap: "16px",
-        }}
-      >
-        {filtered.map((project) => (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gap: "16px",
+      }}
+    >
+        {filtered.map((project, i) => (
           <button
             key={project.slug}
             type="button"
@@ -86,17 +219,17 @@ export default function ProjectGrid({ locale }: { locale: "en" | "cz" }) {
             <div
               style={{
                 width: "100%",
-                aspectRatio: "4 / 3",
-                backgroundImage: `url(${project.imageUrl})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                marginBottom: "8px",
+                aspectRatio: "1/1",
+                borderRadius: 0,
+                overflow: "hidden",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                background: project.color,
               }}
-            />
-            <div style={{ fontSize: "13px" }}>{project.title}</div>
+            >
+              {/* No image available, fallback to color background */}
+            </div>
           </button>
         ))}
-      </div>
     </div>
   );
 }

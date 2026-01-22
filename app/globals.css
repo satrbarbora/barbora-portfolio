@@ -1,22 +1,42 @@
+@font-face {
+  font-family: 'Creatura';
+  src: url('/fonts/Creatura-Press1.woff2') format('woff2'),
+       url('/fonts/Creatura-Press1.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #dde7d5;
+  font-family: 'Creatura', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background-color: #f3ffe6;
   color: #111;
 }
+
 .layout-root {
   display: flex;
   min-height: 100vh;
 }
+
 .layout-main {
   flex: 1;
   padding: 24px;
 }
+
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+html, body {
+  background-color: #f3ffe6;
+}
+
+p, span, div, h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
