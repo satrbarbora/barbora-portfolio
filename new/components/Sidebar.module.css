@@ -1,0 +1,72 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: #f0fff0;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Creatura", sans-serif;
+  font-size: 21px;
+  line-height: 1.15;
+  z-index: 100;
+  color: #000;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: inherit;
+  cursor: pointer;
+}
+.link {
+  display: block;
+  margin-bottom: 10px;
+  color: #000;
+  transition: color 0.1s;
+}
+.link:hover {
+  color: #7b68ee;
+}
+.active {
+  color: #40e0d0 !important;
+}
+.gap52 {
+  height: 52px;
+}
+.kvido {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.1s;
+}
+.kvido:hover {
+  color: #7b68ee;
+}
+.kvidoImgWrapper {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+.kvidoImg {
+  border-radius: 4px;
+  background: transparent;
+  object-fit: contain;
+}
+.kvidoText {
+  font-size: 21px;
+}
+.bottomLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}

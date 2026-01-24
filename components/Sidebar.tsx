@@ -153,8 +153,8 @@ function SidebarContent() {
                   transition: "color 0.2s",
                   color: baseColor,
                 }}
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 {label}
               </Link>
@@ -234,14 +234,14 @@ function SidebarContent() {
         {(() => {
           const isActive = pathname === "/shop";
           const baseColor = isActive ? ACTIVE_COLOR : BASE_COLOR;
-          const { onEnter, onLeave } = makeHoverHandlers(baseColor);
+          const { onMouseEnter, onMouseLeave } = makeHoverHandlers(baseColor);
           return (
             <div style={{ marginBottom: mediumGap }}>
               <Link
                 href="/shop"
                 style={{ transition: "color 0.2s", color: baseColor }}
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 shop
               </Link>
@@ -252,14 +252,14 @@ function SidebarContent() {
         {(() => {
           const isActive = pathname === "/about";
           const baseColor = isActive ? ACTIVE_COLOR : BASE_COLOR;
-          const { onEnter, onLeave } = makeHoverHandlers(baseColor);
+          const { onMouseEnter, onMouseLeave } = makeHoverHandlers(baseColor);
           return (
             <div style={{ marginBottom: mediumGap }}>
               <Link
                 href="/about"
                 style={{ transition: "color 0.2s", color: baseColor }}
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 about
               </Link>
@@ -270,14 +270,14 @@ function SidebarContent() {
         {(() => {
           const isActive = pathname === "/contact";
           const baseColor = isActive ? ACTIVE_COLOR : BASE_COLOR;
-          const { onEnter, onLeave } = makeHoverHandlers(baseColor);
+          const { onMouseEnter, onMouseLeave } = makeHoverHandlers(baseColor);
           return (
             <div style={{ marginBottom: mediumGap }}>
               <Link
                 href="/contact"
                 style={{ transition: "color 0.2s", color: baseColor }}
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 contact
               </Link>
