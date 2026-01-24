@@ -183,37 +183,66 @@ export default function ProjectPage({
   }
 
   return (
-    <div>
-      <Link href={backLink} style={{ fontSize: "14px", marginBottom: "24px", display: "inline-block" }}>
-        {backText}
-      </Link>
-      
-      <h1 style={{ fontSize: "32px", marginBottom: "12px", fontFamily: "'Creatura', sans-serif" }}>
-        {project.title}
-      </h1>
-      
-      <p style={{ fontSize: "16px", marginBottom: "32px", lineHeight: 1.6 }}>
-        {project.description}
-      </p>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "24px",
-          marginBottom: "48px",
-        }}
-      >
-        {project.images && project.images.map((imageColor: string, index: number) => (
-          <div
-            key={index}
-            style={{
-              width: "100%",
-              aspectRatio: "16 / 9",
-              backgroundColor: imageColor,
-            }}
-          />
-        ))}
+    <div style={{
+      minHeight: '100vh',
+      background: '#f7f7fa',
+      padding: 'max(16px, 4vw)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+      <div style={{
+        width: '100%',
+        maxWidth: 540,
+        background: '#fff',
+        borderRadius: 18,
+        boxShadow: '0 4px 32px #0002',
+        padding: 'clamp(18px, 6vw, 36px)',
+        margin: 'max(12px, 2vw) 0',
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 18,
+      }}>
+        <Link href={backLink} style={{ fontSize: 15, color: '#888', marginBottom: 6, textDecoration: 'none', fontWeight: 500, letterSpacing: 0.1 }}>
+          {backText}
+        </Link>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 6vw, 2.5rem)',
+          margin: 0,
+          fontFamily: 'Creatura, sans-serif',
+          color: '#181828',
+          fontWeight: 700,
+          letterSpacing: -1,
+        }}>{project.title}</h1>
+        <p style={{
+          fontSize: 'clamp(1.05rem, 3.5vw, 1.18rem)',
+          color: '#444',
+          margin: 0,
+          lineHeight: 1.7,
+          fontWeight: 400,
+        }}>{project.description}</p>
+        {project.images && project.images.length > 0 && (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 14,
+            margin: '18px 0 0 0',
+          }}>
+            {project.images.map((imageColor: string, index: number) => (
+              <div
+                key={index}
+                style={{
+                  width: '100%',
+                  aspectRatio: '16/9',
+                  background: imageColor,
+                  borderRadius: 12,
+                  boxShadow: '0 2px 12px #0001',
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
