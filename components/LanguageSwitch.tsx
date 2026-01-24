@@ -6,7 +6,13 @@ const BASE_COLOR = "#111";
 const HOVER_COLOR = "#7b68ee";
 const ACTIVE_COLOR = "#40e0d0";
 
-function LangButton({ active, label, onClick }) {
+type LangButtonProps = {
+  active: boolean;
+  label: string;
+  onClick: () => void;
+};
+
+function LangButton({ active, label, onClick }: LangButtonProps) {
   return (
     <button
       type="button"
