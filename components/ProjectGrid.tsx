@@ -203,6 +203,26 @@ export default function ProjectGrid({ locale }: { locale: "en" | "cz" }) {
         gap: "16px",
       }}
     >
+      <style>{`
+        @media (max-width: 900px) {
+          div[style*='display: grid'] {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+            gap: 12px !important;
+          }
+        }
+        @media (max-width: 700px) {
+          div[style*='display: grid'] {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+            gap: 8px !important;
+          }
+        }
+        @media (max-width: 500px) {
+          div[style*='display: grid'] {
+            grid-template-columns: 1fr !important;
+            gap: 6px !important;
+          }
+        }
+      `}</style>
         {filtered.map((project, i) => (
           <button
             key={project.slug}
